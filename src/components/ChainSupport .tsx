@@ -1,13 +1,40 @@
 import { motion } from "framer-motion";
-
+import { ReactSVG } from "react-svg";
+import EthereumIcon from "../assets/icons/ethereum.svg";
+import BitcoinIcon from "../assets/icons/bitcoin.svg";
+import SolanaIcon from "../assets/icons/solana.svg";
+import PolygonIcon from "../assets/icons/polygon.svg";
+import AvalancheIcon from "../assets/icons/avalanche.svg";
+import BnbChainIcon from "../assets/icons/bnbchain.svg";
 const ChainSupport = () => {
   const chains = [
-    { name: "Ethereum", icon: "🟣", color: "#627EEA" },
-    { name: "Bitcoin", icon: "🟠", color: "#F7931A" },
-    { name: "Solana", icon: "🔵", color: "#00FFA3" },
-    { name: "Polygon", icon: "🟣", color: "#8247E5" },
-    { name: "Avalanche", icon: "🔴", color: "#E84142" },
-    { name: "BNB Chain", icon: "🟡", color: "#F0B90B" },
+    {
+      name: "Ethereum",
+      icon: <ReactSVG src={EthereumIcon} className="w-10 h-10" />,
+      color: "#627EEA",
+    },
+    {
+      name: "Bitcoin",
+      icon: <ReactSVG src={BitcoinIcon} className="w-10 h-10" />,
+      color: "#F7931A",
+    },
+    {
+      name: "Solana",
+      icon: <ReactSVG src={SolanaIcon} className="w-10 h-10" />,
+      color: "#00FFA3",
+    },
+    {
+      name: "Polygon",
+      icon: <ReactSVG src={PolygonIcon} className="w-10 h-10" />,
+      color: "#8247E5",
+    },
+    { name: "Avalanche",       icon: <ReactSVG src={AvalancheIcon} className="w-10 h-10" />, 
+ color: "#E84142" },
+    {
+      name: "BNB Chain",
+      icon: <ReactSVG src={BnbChainIcon} className="w-10 h-10" />,
+      color: "#F0B90B",
+    },
   ];
 
   return (

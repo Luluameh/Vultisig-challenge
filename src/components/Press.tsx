@@ -25,7 +25,8 @@ const Press = () => {
               <span className="sr-only">{item.name}</span>
             </motion.div>
           ))}
-        </div>
+              </div>
+              
       </div>
     </section>
   );
