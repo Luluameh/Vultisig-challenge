@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
 import { ReactSVG } from "react-svg";
-import EthereumIcon from "../assets/icons/ethereum.svg";
-import BitcoinIcon from "../assets/icons/bitcoin.svg";
-import SolanaIcon from "../assets/icons/solana.svg";
-import PolygonIcon from "../assets/icons/polygon.svg";
-import AvalancheIcon from "../assets/icons/avalanche.svg";
-import BnbChainIcon from "../assets/icons/bnbchain.svg";
+import EthereumIcon from "../Assets/icons/ethereum.svg"
+import BitcoinIcon from "../Assets/icons/bitcoin.svg";
+import SolanaIcon from "../Assets/icons/solana.svg";
+import PolygonIcon from "../Assets/icons/polygon.svg";
+import AvalancheIcon from "../Assets/icons/avalanche.svg";
+import BnbChainIcon from "../Assets/icons/bnbchain.svg";
 const ChainSupport = () => {
   const chains = [
     {
