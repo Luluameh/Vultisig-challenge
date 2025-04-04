@@ -7,6 +7,8 @@ import {
   Lock,
   Zap,
 } from "lucide-react";
+import Logos from "../Assets/Logomark - no bg.png";
+
 
 const Footer = () => {
   const linkGroups = [
@@ -109,8 +111,9 @@ const Footer = () => {
               viewport={{ once: true }}
               className="flex items-center"
             >
-              <div className="w-10 h-10 bg-gradient-to-r from-[#33E6BF] to-[#0439C7] rounded-lg flex items-center justify-center mr-4">
-                <Shield size={20} className="text-white" />
+              <div >
+                {/* <Shield size={20} className="text-white" /> */}
+                <img src={Logos} alt="Vultisig" className="h-20" />
               </div>
               <div>
                 <h2 className="text-xl font-bold text-white">Vultisig</h2>

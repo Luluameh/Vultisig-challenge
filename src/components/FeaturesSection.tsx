@@ -28,7 +28,7 @@ const HowItWorks = () => {
       title: "Add Guardians",
       description: "Invite trusted devices to co-manage your vault",
       image: Step3Setup,
-      position: "bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2",
+      position: "bottom-0 left-2/3 -translate-x-1/2 translate-y-1/2",
     },
     {
       icon: <CheckCircle className="text-[#33E6BF]" size={24} />,
