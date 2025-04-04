@@ -1,4 +1,4 @@
-import { Download, Key, Smartphone, Users, CheckCircle, ArrowRight } from "lucide-react";
+import { Download, Key, Users, CheckCircle, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 // Import your mobile screenshots
@@ -40,31 +40,83 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="relative py-20 bg-[#02122B] overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+    <section className="relative py-8 md:py-20 bg-[#02122B] overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-2 md:mb-4">
             How <span className="text-[#33E6BF]">Vultisig</span> Works
           </h2>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
             Get started in minutes with our intuitive, secure onboarding process
           </p>
         </div>
 
-        <div className="relative h-[500px] md:h-[600px]">
+        {/* Mobile Linear Steps (for small screens) */}
+        <div className="md:hidden mb-8">
+          <div className="flex flex-col items-center space-y-8">
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                className="w-full max-w-[280px]"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="flex flex-col items-center text-center">
+                  {/* Step Number */}
+                  <div className="bg-[#33E6BF] text-[#02122B] rounded-full w-8 h-8 flex items-center justify-center mb-3 font-bold">
+                    {index + 1}
+                  </div>
+
+                  {/* Step Info */}
+                  <div className="flex justify-center mb-3">
+                    <div className="bg-[#33E6BF]/10 p-2 rounded-full">
+                      {step.icon}
+                    </div>
+                  </div>
+                  <h3 className="text-white font-bold mb-1 text-lg">
+                    {step.title}
+                  </h3>
+                  <p className="text-white/80 text-sm mb-4">
+                    {step.description}
+                  </p>
+
+                  {/* Mobile Preview */}
+                  <div className="relative bg-[#11284A] rounded-xl p-2 border border-[#33E6BF]/20 shadow-lg w-[160px]">
+                    <div className="bg-[#061B3A] rounded-lg overflow-hidden aspect-[9/16]">
+                      <img
+                        src={step.image}
+                        alt={step.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Circular Layout (for medium screens and up) */}
+        <div className="hidden md:block relative h-[400px] lg:h-[500px] xl:h-[600px]">
           {/* Circular Path */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] rounded-full border-2 border-dashed border-[#33E6BF]/30" />
+            <div className="w-[300px] h-[300px] lg:w-[350px] lg:h-[350px] xl:w-[400px] xl:h-[400px] rounded-full border-2 border-dashed border-[#33E6BF]/30" />
           </div>
 
           {/* Central Phone Illustration */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[200px] md:w-[250px]">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-[180px] lg:w-[220px] xl:w-[250px]">
             <div className="relative bg-[#11284A] rounded-3xl p-3 border border-[#33E6BF]/20 shadow-xl">
               <div className="bg-[#061B3A] rounded-xl overflow-hidden aspect-[9/19.5] flex items-center justify-center">
-                <Smartphone className="text-[#33E6BF]" size={48} />
+                <img
+                  src={Step1Download}
+                  alt="Download App"
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -top-3 -right-3 bg-[#33E6BF] text-[#02122B] rounded-full w-8 h-8 flex items-center justify-center">
-                <span className="font-bold text-sm">4</span>
+                <span className="font-bold text-sm">1</span>
               </div>
             </div>
           </div>
@@ -73,46 +125,15 @@ const HowItWorks = () => {
           {steps.map((step, index) => (
             <motion.div
               key={index}
-              className={`absolute ${step.position} z-20 w-[160px] md:w-[200px]`}
+              className={`absolute ${step.position} z-20 w-[160px] lg:w-[180px] xl:w-[200px]`}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true, margin: "-20px" }}
             >
-              <div className="group cursor-pointer">
-                {/* Mobile Preview */}
-                <motion.div
-                  className="relative bg-[#11284A] rounded-xl p-2 border border-[#33E6BF]/20 mb-3 shadow-lg"
-                  whileHover={{ y: -10 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <div className="bg-[#061B3A] rounded-lg overflow-hidden aspect-[9/16]">
-                    {step.image ? (
-                      <img
-                        src={step.image}
-                        alt={step.title}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#061B3A] to-[#11284A]">
-                        <div className="text-center p-4">
-                          <div className="mx-auto bg-[#33E6BF]/10 w-12 h-12 rounded-full flex items-center justify-center mb-3">
-                            {step.icon}
-                          </div>
-                          <h3 className="text-white font-medium">
-                            {step.title}
-                          </h3>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  <div className="absolute -top-2 -right-2 bg-[#33E6BF] text-[#02122B] rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
-                    {index + 1}
-                  </div>
-                </motion.div>
-
-                {/* Step Info */}
-                <div className="text-center">
+              <div className="group cursor-pointer flex flex-col items-center">
+                {/* Step Info (now above the image) */}
+                <div className="text-center mb-3 order-first">
                   <div className="flex justify-center mb-2">
                     <div className="bg-[#33E6BF]/10 p-2 rounded-full">
                       {step.icon}
@@ -121,6 +142,26 @@ const HowItWorks = () => {
                   <h3 className="text-white font-bold mb-1">{step.title}</h3>
                   <p className="text-white/80 text-sm">{step.description}</p>
                 </div>
+
+                {/* Mobile Preview (skip for step 1) */}
+                {index !== 0 && (
+                  <motion.div
+                    className="relative bg-[#11284A] rounded-xl p-2 border border-[#33E6BF]/20 shadow-lg"
+                    whileHover={{ y: -10 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    <div className="bg-[#061B3A] rounded-lg overflow-hidden aspect-[9/16]">
+                      <img
+                        src={step.image}
+                        alt={step.title}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="absolute -top-2 -right-2 bg-[#33E6BF] text-[#02122B] rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
+                      {index + 1}
+                    </div>
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           ))}
@@ -158,14 +199,14 @@ const HowItWorks = () => {
         </div>
 
         {/* CTA Button */}
-        <div className="text-center mt-20">
+        <div className="text-center mt-8 md:mt-16">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="px-8 py-4 bg-gradient-to-r from-[#33E6BF] to-[#0439C7] text-white font-semibold rounded-xl hover:opacity-90 transition-all flex items-center justify-center mx-auto gap-3"
+            className="px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-[#33E6BF] to-[#0439C7] text-white font-semibold rounded-lg md:rounded-xl hover:opacity-90 transition-all flex items-center justify-center mx-auto gap-2 text-sm md:text-base"
           >
             Get Started in 4 Easy Steps
-            <ArrowRight className="ml-1" size={20} />
+            <ArrowRight className="ml-1" size={18} />
           </motion.button>
         </div>
       </div>
